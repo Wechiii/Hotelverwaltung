@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WebApplicationHotel.Views.InsertGuestView"
+             Title="InsertGuest">
+    <Grid RowDefinitions="4*,3*,3*,3*,4*,4*" ColumnDefinitions="4*,6*"
+          Margin="0,0,500,0"
+          >
+        <Label 
+            Text="Entery for Guest"
+            FontSize="Medium"
+            FontAttributes="Bold"
+            Grid.Row="0" Grid.Column="0"
+            Grid.ColumnSpan="2"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"/>
+
+        <Label 
+            Text="Firstname"
+            FontAttributes="Bold"
+            Grid.Row="1" Grid.Column="0"
+            Margin="0,0,15,0"
+            VerticalOptions="Center" 
+            HorizontalOptions="End"/>
+        <Entry
+            Text="{Binding Firstname}"
+            Placeholder="Firstname"
+               Grid.Row="1" Grid.Column="1"
+               
+               />
+        <!---Guest-->
+        <Label 
+            Text="Lastname"
+            FontAttributes="Bold"
+            Grid.Row="2" Grid.Column="0"
+            Margin="0,0,15,0"
+            VerticalOptions="Center" 
+            HorizontalOptions="End"/>
+        <Entry 
+            Text="{Binding Lastname}"
+            Placeholder="Lastname"
+               Grid.Row="2" Grid.Column="1"
+              Margin="0,20,0,0" />
+        <Label 
+            Text="Address"
+            FontAttributes="Bold"
+            Grid.Row="3" Grid.Column="0"
+            Margin="0,0,15,0"
+            VerticalOptions="Center" 
+            HorizontalOptions="End"/>
+        <Entry 
+            Text="{Binding Address}"
+            Placeholder="Address"
+               Grid.Row="3" Grid.Column="1"
+              Margin="0,20,0,0" />
+
+
+        <!---Buttons-->
+        <HorizontalStackLayout
+            Grid.Row="6" Grid.Column="0"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="Center"
+            Margin="300,15,0,0">
+
+            <Button Text="Insert Guest"
+             Margin="0,0,50,0"       
+             VerticalOptions="Center"
+             HorizontalOptions="Center"
+             Command="{Binding CmdinsertNewGuest}"/>
+            <Button Text="Felder leeren"
+             VerticalOptions="Center"
+            HorizontalOptions="Center"
+             Command="{Binding Felderleeren}"/>
+        </HorizontalStackLayout>
+        <Label 
+            Text="Feedback:"
+            FontAttributes="Bold"
+            Grid.Row="4" Grid.Column="0"
+            Margin="0,0,15,0"
+            VerticalOptions="Center" 
+            HorizontalOptions="End"/>
+        <Label 
+            Text="{Binding Feedback}"
+            Grid.Row="4" Grid.Column="2"
+             Margin="0,40,0,0"
+            />
+    </Grid>
+</ContentPage>
