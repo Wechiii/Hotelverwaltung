@@ -3,12 +3,54 @@
     x:Class="WebApplicationHotel.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:WebApplicationHotel"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:view="clr-namespace:WebApplicationHotel.Views">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+
+    <FlyoutItem Title="Startseite">
+        <Tab>
+            <ShellContent
+                Title="Home"
+                ContentTemplate="{DataTemplate view:MainPage}"
+                Route="MainPage">
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <!-- Zweiter Menü eintrag-->
+    <FlyoutItem Title="Show Rooms">
+        <Tab>
+            <ShellContent
+                Title="Rooms"
+                ContentTemplate="{DataTemplate view:ShowRoomsView}"
+                Route="Rooms">
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Insert Guest">
+        <Tab>
+            <ShellContent
+                Title="InsertGuest"
+                ContentTemplate="{DataTemplate view:InsertGuestView}"
+                Route="InsertGuest">
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Show Guest">
+        <Tab>
+            <ShellContent
+                Title="Guests"
+                ContentTemplate="{DataTemplate view:ShowGuestView}"
+                Route="Guests">
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Booking">
+        <Tab>
+            <ShellContent
+                Title="BookingView"
+                ContentTemplate="{DataTemplate view:BookingView}"
+                Route="BookingView">
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
 
 </Shell>

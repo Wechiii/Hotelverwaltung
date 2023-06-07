@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WebApplicationHotel.Views.ShowRoomsView"
-             Title="ShowRoomsView">
+             x:Class="WebApplicationHotel.Views.ShowGuestView"
+             Title="ShowGuestView">
 
 
 
-    <CollectionView ItemsSource="{Binding Rooms}">
+    <CollectionView ItemsSource="{Binding Guests}">
 
         <CollectionView.ItemsLayout>
             <GridItemsLayout Span="1" Orientation="Vertical" />
@@ -16,74 +16,61 @@
             <DataTemplate>
                 <HorizontalStackLayout>
                     <Label
-                           Text="ZimmerNr.:"
-                           VerticalOptions="Center" 
-                           Margin="10"/>
-                    
-                    <Label
-                           Text="{Binding ZimmerNr}"
+                           Text="Vorname:"
                            VerticalOptions="Center" 
                            Margin="10"/>
 
-                    
-                    
                     <Label
-                           Text="Betten:"
-                           VerticalOptions="Center" 
-                           Margin="10"/>
-                    
-                    <Label
-                           Text="{Binding Betten}"
+                           Text="{Binding Firstname}"
                            VerticalOptions="Center" 
                            Margin="10"/>
 
 
 
                     <Label
-                           Text="Küche:"
+                           Text="Nachname:"
                            VerticalOptions="Center" 
                            Margin="10"/>
 
                     <Label
-                           Text="{Binding Küche}"
-                           VerticalOptions="Center" 
-                           Margin="10"/>
-
-
-
-                    <Label
-                           Text="Balkon:"
-                           VerticalOptions="Center" 
-                           Margin="10"/>
-
-                    <Label
-                           Text="{Binding Balkon}"
+                           Text="{Binding Lastname}"
                            VerticalOptions="Center" 
                            Margin="10"/>
 
 
 
                     <Label
-                           Text="Terrasse:"
+                           Text="Strasse:"
                            VerticalOptions="Center" 
                            Margin="10"/>
 
                     <Label
-                           Text="{Binding Terrasse}"
+                           Text="{Binding Street}"
+                           VerticalOptions="Center" 
+                           Margin="10"/>
+
+                    <Label
+                           Text="Hausnummer::"
+                           VerticalOptions="Center" 
+                           Margin="10"/>
+
+                    <Label
+                           Text="{Binding Housenumber}"
                            VerticalOptions="Center" 
                            Margin="10"/>
 
 
 
                     <Label
-                           Text="Preis:"
+                           Text="Postleitzahl:"
                            VerticalOptions="Center" 
                            Margin="10"/>
 
                     <Label
-                           Text="{Binding Preis}"
+                           Text="{Binding Postalcode}"
                            VerticalOptions="Center" 
                            Margin="10"/>
+
                 </HorizontalStackLayout>
             </DataTemplate>
         </CollectionView.ItemTemplate>

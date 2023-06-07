@@ -3,85 +3,109 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WebApplicationHotel.Views.InsertGuestView"
              Title="InsertGuest">
-    <Grid RowDefinitions="4*,3*,3*,3*,4*,4*" ColumnDefinitions="4*,6*"
-          Margin="0,0,500,0"
-          >
+    <Grid RowDefinitions="4*,2*,2*,2*,2*,2*" ColumnDefinitions="1*,1*,1*,1*">
         <Label 
-            Text="Entery for Guest"
+            Text="Gaesteregistrierung"
             FontSize="Medium"
             FontAttributes="Bold"
             Grid.Row="0" Grid.Column="0"
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="4"
             VerticalOptions="Center" 
             HorizontalOptions="Center"/>
 
+
+        
         <Label 
-            Text="Firstname"
+            Text="Vorname"
             FontAttributes="Bold"
             Grid.Row="1" Grid.Column="0"
-            Margin="0,0,15,0"
+            Margin="10"
             VerticalOptions="Center" 
             HorizontalOptions="End"/>
         <Entry
             Text="{Binding Firstname}"
-            Placeholder="Firstname"
+            Placeholder="Vorname"
                Grid.Row="1" Grid.Column="1"
-               
-               />
-        <!---Guest-->
+              Margin="10"/>
+        
         <Label 
-            Text="Lastname"
+            Text="Nachname"
             FontAttributes="Bold"
-            Grid.Row="2" Grid.Column="0"
-            Margin="0,0,15,0"
+            Grid.Row="1" Grid.Column="2"
+            Margin="10"
             VerticalOptions="Center" 
             HorizontalOptions="End"/>
         <Entry 
             Text="{Binding Lastname}"
-            Placeholder="Lastname"
-               Grid.Row="2" Grid.Column="1"
-              Margin="0,20,0,0" />
+            Placeholder="Nachname"
+               Grid.Row="1" Grid.Column="3"
+              Margin="10" />
+        
+        
+        
         <Label 
-            Text="Address"
+            Text="Strasse"
             FontAttributes="Bold"
-            Grid.Row="3" Grid.Column="0"
-            Margin="0,0,15,0"
+            Grid.Row="2" Grid.Column="0"
+            Margin="10"
             VerticalOptions="Center" 
             HorizontalOptions="End"/>
         <Entry 
-            Text="{Binding Address}"
-            Placeholder="Address"
+            Text="{Binding Street}"
+            Placeholder="Strasse"
+               Grid.Row="2" Grid.Column="1"
+              Margin="10" />
+
+        <Label 
+            Text="Hausnummer"
+            FontAttributes="Bold"
+            Grid.Row="2" Grid.Column="2"
+            Margin="10"
+            VerticalOptions="Center" 
+            HorizontalOptions="End"/>
+        <Entry 
+            Text="{Binding Housenumber}"
+            Placeholder="Hausnummer"
+               Grid.Row="2" Grid.Column="3"
+              Margin="10" />
+
+        <Label 
+            Text="Postleitzahl"
+            FontAttributes="Bold"
+            Grid.Row="3" Grid.Column="0"
+            Margin="10"
+            VerticalOptions="Center" 
+            HorizontalOptions="End"/>
+        <Entry 
+            Text="{Binding Postalcode}"
+            Placeholder="Postleitzahl"
                Grid.Row="3" Grid.Column="1"
-              Margin="0,20,0,0" />
+              Margin="10" />
 
 
         <!---Buttons-->
-        <HorizontalStackLayout
-            Grid.Row="6" Grid.Column="0"
-            Grid.ColumnSpan="2"
-            HorizontalOptions="Center"
-            Margin="300,15,0,0">
-
-            <Button Text="Insert Guest"
-             Margin="0,0,50,0"       
+            <Button Text="Insert Guest"       
              VerticalOptions="Center"
              HorizontalOptions="Center"
-             Command="{Binding CmdinsertNewGuest}"/>
+             Command="{Binding CmdinsertNewGuest}"
+             Grid.Row="4" Grid.Column="1"/>
+            
             <Button Text="Felder leeren"
              VerticalOptions="Center"
-            HorizontalOptions="Center"
-             Command="{Binding Felderleeren}"/>
-        </HorizontalStackLayout>
+             HorizontalOptions="Center"
+             Command="{Binding Felderleeren}"
+             Grid.Row="4" Grid.Column="2"/>
+            
         <Label 
             Text="Feedback:"
             FontAttributes="Bold"
-            Grid.Row="4" Grid.Column="0"
+            Grid.Row="5" Grid.Column="1"
             Margin="0,0,15,0"
             VerticalOptions="Center" 
             HorizontalOptions="End"/>
         <Label 
             Text="{Binding Feedback}"
-            Grid.Row="4" Grid.Column="2"
+            Grid.Row="5" Grid.Column="2"
              Margin="0,40,0,0"
             />
     </Grid>

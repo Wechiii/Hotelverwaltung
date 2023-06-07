@@ -8,7 +8,6 @@ using System.Net;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.Networking;
 
 
 namespace WebApplicationHotel.ViewModels
@@ -23,10 +22,16 @@ namespace WebApplicationHotel.ViewModels
         private String _lastname;
 
         [ObservableProperty]
-        private string _address;
+        private String feedback;
 
         [ObservableProperty]
-        private String feedback;
+        private String _street;
+
+        [ObservableProperty]
+        private int _housenumber;
+
+        [ObservableProperty]
+        private int _postalcode;
 
         public InsertGuestViewModel()
         {
@@ -34,8 +39,8 @@ namespace WebApplicationHotel.ViewModels
             this.Felderleeren = new AsyncRelayCommand(OnFelderLeeren);
         }
 
-        public IAsyncRelayCommand CmdinsertNewGuest { get; }
-        public IAsyncRelayCommand Felderleeren { get; }
+        public IAsyncRelayCommand CmdinsertNewGuest { get; set; }
+        public IAsyncRelayCommand Felderleeren { get; set; }
 
         private async Task insertNewGuest()
         {
@@ -44,45 +49,68 @@ namespace WebApplicationHotel.ViewModels
             if (Firstname == null || Firstname == "")
             {
                 error = error + 1;
-                this.Feedback = "Name darf nicht leer sein";
+                this.Feedback = "Vorname fehlt!";
             }
-            if (Lastname == null || Firstname == "")
+            if (Lastname == null || Lastname == "")
             {
                 error = error + 1;
-                this.Feedback = "Name darf nicht leer sein";
+                this.Feedback = "Nachname fehlt!";
 
             }
-            if (Address == null || Firstname == "")
+            if (Street == null || Street == "")
             {
                 error = error + 1;
-                this.Feedback = "Name darf nicht leer sein";
+                this.Feedback = "Strasse fehlt!";
 
             }
+            if (Housenumber == 0)
+            {
+                error = error + 1;
+                this.Feedback = "Hausnummer fehlt!";
+
+            }
+            if (Postalcode == 0)
+            {
+                error = error + 1;
+                this.Feedback = "Postleitzahl fehlt!";
+
+            }
+
             Console.WriteLine(error);
+
             if (error == 0)
             {
                 Guest g = new Guest()
                 {
-                    Vorname = this.Firstname,
-                    Nachname = this.Lastname,
-                    adress = this.Address
+                    Firstname = this.Firstname,
+                    Lastname = this.Lastname,
+
                 };
+
+                Address a = new Address()
+                {
+                    Street = this.Street,
+                    Housenumber = this.Housenumber,
+                    Postalcode = this.Postalcode,
+
+                };
+
+                g.Addresses.Add(a);
 
                 HttpClient client = new HttpClient();
                 HttpResponseMessage m = await client.PostAsJsonAsync<Guest>("https://localhost:7251/api/Hotelverwaltung/PostGuest", g);
                 bool succes = Convert.ToBoolean(await m.Content.ReadAsStringAsync());
-                this.Feedback = "Guest wurde Eingetragen";
-
+                this.Feedback = "Gast wurde Eingetragen";
             }
-
         }
 
-        private Task OnFelderLeeren()
-        {
-            this.Firstname = null;
-            this.Lastname = null;
-            this.Address = null;
-            return Task.CompletedTask;
-        }
+            private Task OnFelderLeeren()
+            {
+                this.Firstname = null;
+                this.Lastname = null;
+                this.Housenumber = 0;
+                this.Housenumber = 0;
+                return Task.CompletedTask;
+            }   
     }
 }

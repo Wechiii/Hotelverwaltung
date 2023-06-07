@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using HotelverwaltungKlassenbib;
 using System.Net.Http.Json;
 using CommunityToolkit.Mvvm.Input;
 using WebApplicationHotel.Views;
 using System.Collections.ObjectModel;
+using HotelverwaltungKlassenbib;
 
 namespace WebApplicationHotel.ViewModels
 {
@@ -15,14 +15,14 @@ namespace WebApplicationHotel.ViewModels
 
         public ShowRoomsViewModel()
         {
-            GetRoomAsync();
+            GetRoomsAsync();
         }
 
 
-        public async Task GetRoomAsync()
+        public async Task GetRoomsAsync()
         {
             HttpClient client = new HttpClient();
-            var rooms = await client.GetFromJsonAsync<List<Room>>("https://localhost:7251/api/Hotelverwaltung/allRooms");
+            var rooms = await client.GetFromJsonAsync<List<Room>>("https://localhost:7251/api/Hotelverwaltung/Rooms");
             Console.WriteLine(rooms);
             rooms.ForEach(r => Rooms.Add(r));
         }

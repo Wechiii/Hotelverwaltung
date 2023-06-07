@@ -1,4 +1,5 @@
 ﻿using APi.DB;
+using HotelverwaltungKlassenbib;
 using HotelverwaltungKlassenbib.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,11 +14,19 @@ namespace API.Controllers
 
         //Rooms
         [HttpGet]
-        [Route("allRooms")]
-        public async Task<IActionResult> GetAllArticles()
+        [Route("Rooms")]
+        public async Task<IActionResult> GetAllRooms()
         {
-            return new JsonResult(await this._context.Rooms.ToListAsync());
+            return new JsonResult(await this._context.Rooms.ToListAsync<Room>());
         }
+
+        [HttpGet]
+        [Route("Guests")]
+        public async Task<IActionResult> GetAllGuests()
+        {
+            return new JsonResult(await this._context.Guests.ToListAsync<Guest>());
+        }
+
 
 
         [HttpGet]
@@ -27,15 +36,29 @@ namespace API.Controllers
             return new JsonResult(await this._context.Rooms.FindAsync(id));
         }
 
-        //GUESTS
-        //TODO MAUI erledigen --> noch alles erzeugen
+
+
         [HttpPost]
         [Route("PostGuest")]
-        public async Task<bool> InsertOne(Guest g)
+        public async Task<bool> InsertGuest(Guest g)
         {
             if (g != null)
             {
+                this._context.Addresses.Add(g.Addresses.First());
                 this._context.Guests.Add(g);
+                int i = await this._context.SaveChangesAsync();
+                if (i > 0) return true;
+            }
+            return false;
+        }
+
+        [HttpPost]
+        [Route("PostAddress")]
+        public async Task<bool> InsertAddress(Address a)
+        {
+            if (a != null)
+            {
+                this._context.Addresses.Add(a);
                 int i = await this._context.SaveChangesAsync();
                 if (i > 0) return true;
             }
